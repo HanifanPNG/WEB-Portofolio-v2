@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css' // Pastikan CSS AOS sudah terimport
 
 const navLinks = [
   { href: '#overview', icon: 'dashboard', label: 'Home' },
@@ -12,14 +10,6 @@ const navLinks = [
 export default function Sidebar({ isOpen, toggleSidebar }) {
   const [activeLink, setActiveLink] = useState('#overview')
 
-  // Inisialisasi AOS saat komponen pertama kali dimuat
-  useEffect(() => {
-    AOS.init({
-      duration: 800,     // Durasi animasi (800ms)
-      once: true,        // Animasi hanya berjalan sekali saat web dibuka
-      easing: 'ease-out-cubic' // Transisi animasi yang lebih smooth/profesional
-    })
-  }, [])
 
   const handleScroll = (e, href) => {
     e.preventDefault()

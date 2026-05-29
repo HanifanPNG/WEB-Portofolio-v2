@@ -8,9 +8,13 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FAB from './components/FAB';
+import Loader from './components/Loader';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Responsive default state on mount & resize
   useEffect(() => {
@@ -33,8 +37,23 @@ export default function App() {
     setIsSidebarOpen(prev => !prev);
   };
 
+  const handleLoaderFinished = () => {
+    setIsLoading(false);
+    // Use refreshHard to wipe prior animation state — ensures every data-aos element
+    // animates fresh now that the loader curtain has lifted.
+    setTimeout(() => {
+      AOS.init({
+        duration: 800,
+        once: true,
+        easing: 'ease-out-cubic',
+      });
+      AOS.refreshHard();
+    }, 100);
+  };
+
   return (
     <>
+      {isLoading && <Loader onFinished={handleLoaderFinished} />}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <TopBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <div className={`transition-all duration-300 ease-in-out ${
