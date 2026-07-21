@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import roboticCert from '../assets/robotic_certificate.png';
 import hackathonCert from '../assets/hackathon_certificate.png';
 
@@ -17,15 +17,54 @@ const certificatesData = [
   }
 ];
 
+const experienceData = [
+  {
+    icon: 'school',
+    title: 'UIN Saizu Informatics Student Association',
+    period: '2025 - 2026',
+    role: 'Student Resource Development Department Staff',
+    desc: 'Responsible for developing information technology resources in the academic field and fostering student growth within the association.'
+  },
+  {
+    icon: 'event',
+    title: 'Webinar Career IT',
+    period: 'April 2025',
+    role: 'Event Chairperson',
+    desc: 'Lead, coordinate, and take full responsibility for the entire series of events, ensuring successful delivery of career insights.'
+  },
+  {
+    icon: 'groups',
+    title: 'Collaboration Day Event',
+    period: 'August 2025',
+    role: 'Event Division Coordinator',
+    desc: 'Plan, organize, and oversee all event details from start to finish, ensuring that the event runs smoothly and stays within budget.'
+  },
+  {
+    icon: 'volunteer_activism',
+    title: 'Student Executive Board of the Faculty of Science and Technology, State Islamic University of Saifuddin Zuhri',
+    period: '2026 - 2027',
+    role: 'Department of Social and Community Affairs',
+    desc: 'Organizing real and sustainable community service programs.'
+  }
+];
+
+const INITIAL_SHOW = 3;
+
 export default function Experience() {
   const [activeCert, setActiveCert] = useState(null);
+  const [showAllExp, setShowAllExp] = useState(false);
+
+  const visibleExp = showAllExp ? experienceData : experienceData.slice(0, INITIAL_SHOW);
+  const hiddenCount = experienceData.length - INITIAL_SHOW;
+
+  const iconBg = (index) => index % 2 === 0 ? 'bg-primary-container' : 'bg-tertiary-container';
 
   return (
     <section className="grid grid-cols-12 gap-6 mb-6 overflow-hidden">
       {/* EXPERIENCE LIST */}
       <div 
         className="col-span-12 lg:col-span-7"
-        data-aos="fade-right" // Blok pengalaman bergeser halus dari kiri
+        data-aos="fade-right"
         data-aos-duration="800"
       >
         <div className="flex items-center justify-between mb-6">
@@ -34,62 +73,45 @@ export default function Experience() {
         </div>
         
         <div className="space-y-4">
-          {/* Exp Item 1 */}
-          <div 
-            data-aos="fade-right"
-            data-aos-delay="200" // Muncul berurutan pertama
-            className="bg-white border-2 border-black p-6 hard-shadow flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300 ease-in-out"
-          >
-            <div className="w-12 h-12 bg-primary-container border-2 border-black flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform">
-              <span className="material-symbols-outlined">school</span>
-            </div>
-            <div>
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <h4 className="font-black text-xl uppercase leading-tight group-hover:text-primary transition-colors">UIN Saizu Informatics Student Association</h4>
-                <span className="text-[14px] font-bold bg-secondary-container px-2 border-2 border-black">2025 - 2026</span>
+          {visibleExp.map((exp, index) => (
+            <div
+              key={index}
+              data-aos="fade-right"
+              data-aos-delay={200 + index * 150}
+              className="bg-white border-2 border-black p-6 hard-shadow flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300 ease-in-out"
+            >
+              <div className={`w-12 h-12 ${iconBg(index)} border-2 border-black flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform`}>
+                <span className="material-symbols-outlined">{exp.icon}</span>
               </div>
-              <p className="text-[14px] font-bold text-primary mb-2">Student Resource Development Department Staff</p>
-              <p className="text-[16px] opacity-80">Responsible for developing information technology resources in the academic field and fostering student growth within the association.</p>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <h4 className="font-black text-base sm:text-lg uppercase leading-tight group-hover:text-primary transition-colors">{exp.title}</h4>
+                  <span className="text-[14px] font-bold bg-secondary-container px-2 border-2 border-black whitespace-nowrap">{exp.period}</span>
+                </div>
+                <p className="text-[14px] font-bold text-primary mb-2">{exp.role}</p>
+                <p className="text-[16px] opacity-80">{exp.desc}</p>
+              </div>
             </div>
-          </div>
+          ))}
 
-          {/* Exp Item 2 */}
-          <div 
-            data-aos="fade-right"
-            data-aos-delay="350" // Muncul berikutnya (+150ms)
-            className="bg-white border-2 border-black p-6 hard-shadow flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300 ease-in-out"
-          >
-            <div className="w-12 h-12 bg-tertiary-container border-2 border-black flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform">
-              <span className="material-symbols-outlined">event</span>
-            </div>
-            <div>
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <h4 className="font-black text-xl uppercase leading-tight group-hover:text-primary transition-colors">Webinar Career IT</h4>
-                <span className="text-[14px] font-bold bg-secondary-container px-2 border-2 border-black">April 2025</span>
-              </div>
-              <p className="text-[14px] font-bold text-primary mb-2">Event Chairperson</p>
-              <p className="text-[16px] opacity-80">Lead, coordinate, and take full responsibility for the entire series of events, ensuring successful delivery of career insights.</p>
-            </div>
-          </div>
-
-          {/* Exp Item 3 */}
-          <div 
-            data-aos="fade-right"
-            data-aos-delay="500" // Muncul terakhir (+150ms)
-            className="bg-white border-2 border-black p-6 hard-shadow flex items-start gap-6 group hover:translate-x-2 transition-transform duration-300 ease-in-out"
-          >
-            <div className="w-12 h-12 bg-primary-container border-2 border-black flex items-center justify-center shrink-0 group-hover:rotate-6 transition-transform">
-              <span className="material-symbols-outlined">groups</span>
-            </div>
-            <div>
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                <h4 className="font-black text-xl uppercase leading-tight group-hover:text-primary transition-colors">Collaboration Day Event</h4>
-                <span className="text-[14px] font-bold bg-secondary-container px-2 border-2 border-black">August 2025</span>
-              </div>
-              <p className="text-[14px] font-bold text-primary mb-2">Event Division Coordinator</p>
-              <p className="text-[16px] opacity-80">Plan, organize, and oversee all event details from start to finish, ensuring that the event runs smoothly and stays within budget.</p>
-            </div>
-          </div>
+          {!showAllExp && hiddenCount > 0 && (
+            <button
+              onClick={() => setShowAllExp(true)}
+              data-aos="fade-up"
+              data-aos-delay={200 + INITIAL_SHOW * 150}
+              className="w-full bg-white border-2 border-black p-4 hard-shadow font-black text-sm uppercase hover:translate-x-1 transition-transform duration-300 cursor-pointer"
+            >
+              Lihat pengalaman lainnya (+{hiddenCount})
+            </button>
+          )}
+          {showAllExp && hiddenCount > 0 && (
+            <button
+              onClick={() => setShowAllExp(false)}
+              className="w-full bg-white border-2 border-black p-4 hard-shadow font-black text-sm uppercase hover:-translate-x-1 transition-transform duration-300 cursor-pointer"
+            >
+              Tampilkan lebih sedikit
+            </button>
+          )}
         </div>
       </div>
 

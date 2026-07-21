@@ -1,75 +1,32 @@
-import React, { useState, useEffect } from 'react';
-
-export default function TopBar({ isOpen, toggleSidebar }) {
-  const [showText, setShowText] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Jika scroll ke bawah dan posisi sudah melewati 50px, sembunyikan tulisan
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setShowText(false);
-      } else {
-        // Jika scroll ke atas, munculkan kembali tulisan
-        setShowText(true);
-      }
-
-      // Simpan posisi scroll terakhir
-      setLastScrollY(currentScrollY);
-    };
-
-    // Pasang event listener scroll
-    window.addEventListener('scroll', handleScroll);
-
-    // Bersihkan event listener saat komponen tidak dimuat lagi
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [lastScrollY]);
-
+export default function TopBar({ isOpen, showNavText }) {
   return (
     <header
-      className={`fixed top-0 right-0 h-16 bg-surface flex items-center justify-between px-6 border-b-2 border-black header-shadow z-40 transition-all duration-300 ease-in-out ${
-        isOpen ? 'md:left-[240px] left-0' : 'left-0'
+      className={`fixed top-0 right-0 h-16 bg-surface flex items-center justify-between border-b-2 border-black header-shadow z-40 transition-all duration-300 ease-in-out overflow-hidden ${
+        isOpen
+          ? 'md:left-[240px] left-0 px-4 sm:px-6'
+          : 'left-0 pl-[56px] sm:pl-[60px] pr-4 sm:pr-6'
       }`}
-      data-aos="fade-down"
     >
-      {/* Left side: navigation / Title */}
-      <div className="flex items-center gap-4 h-full">
-        {/* Sidebar Toggle Button */}
-        <button
-          onClick={toggleSidebar}
-          className="bg-secondary-container border-2 border-black w-10 h-10 flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer"
-          aria-label="Toggle Sidebar"
+      <div className="overflow-hidden h-full flex items-center">
+        <span
+          className={`font-black text-on-surface whitespace-nowrap uppercase transition-all duration-300 ease-in-out ${
+            showNavText
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 -translate-y-2 pointer-events-none'
+          } text-2xl sm:text-3xl lg:text-4xl`}
         >
-          <span className="material-symbols-outlined text-black font-black select-none">
-            {isOpen ? 'menu_open' : 'menu'}
-          </span>
-        </button>
-
-        <div className="overflow-hidden h-full flex items-center">
-          <span 
-            className={`font-black text-on-surface text-4xl uppercase transition-all duration-300 ease-in-out ${
-              showText 
-                ? 'opacity-100 translate-y-0' 
-                : 'opacity-0 -translate-y-2 pointer-events-none'
-            }`}
-          >
-            HOME
-          </span>
-        </div>
+        </span>
       </div>
 
-      {/* Right side: profile picture and name */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3 shrink-0">
         <img
           src="/images/profile.jpg"
           alt="Hanifan Pangabekti"
-          className="w-10 h-10 rounded-full border-2 border-black object-cover hover:scale-105 transition-transform duration-200"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-black object-cover hover:scale-105 transition-transform duration-200"
         />
-        <span className="font-black text-lg text-on-surface">Hanifan Pangabekti</span>
+        <span className="hidden sm:inline font-black text-sm sm:text-lg text-on-surface truncate max-w-[120px] sm:max-w-[200px]">
+          Hanifan Pangabekti
+        </span>
       </div>
     </header>
   );

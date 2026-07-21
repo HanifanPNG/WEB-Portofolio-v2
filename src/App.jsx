@@ -15,6 +15,8 @@ import 'aos/dist/aos.css';
 export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [showNavText, setShowNavText] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Responsive default state on mount & resize
   useEffect(() => {
@@ -33,7 +35,25 @@ export default function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Show/hide nav text on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setShowNavText(false);
+      } else {
+        setShowNavText(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
   const toggleSidebar = () => {
+    if (isSidebarOpen) {
+      setShowNavText(true);
+    }
     setIsSidebarOpen(prev => !prev);
   };
 
@@ -55,7 +75,7 @@ export default function App() {
     <>
       {isLoading && <Loader onFinished={handleLoaderFinished} />}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <TopBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <TopBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} showNavText={showNavText} />
       <div className={`transition-all duration-300 ease-in-out ${
         isSidebarOpen ? 'md:ml-[240px] ml-0' : 'ml-0'
       }`}>

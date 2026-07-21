@@ -27,6 +27,17 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
 
   return (
     <>
+      {/* Floating toggle — visible saat sidebar tertutup */}
+      <button
+        onClick={toggleSidebar}
+        className={`fixed top-4 left-4 z-50 bg-secondary-container border-2 border-black w-10 h-10 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer ${
+          isOpen ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 pointer-events-auto scale-100'
+        }`}
+        aria-label="Buka Sidebar"
+      >
+        <span className="material-symbols-outlined text-black font-black select-none">menu</span>
+      </button>
+
       {/* Backdrop for mobile */}
       <div 
         className={`fixed inset-0 bg-black/40 z-45 transition-opacity duration-300 md:hidden ${
@@ -40,24 +51,23 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        {/* Logo */}
+        {/* Logo + Toggle */}
         <div 
           className="p-6 flex items-center justify-between"
           data-aos="fade-down"
-          data-aos-delay="200" // Muncul setelah sidebar utama bergeser
+          data-aos-delay="200"
         >
           <div>
-            <h1 className="text-2xl font-black text-on-surface leading-tight">HANIFAN PNG</h1>
+            <h1 className="text-2xl font-black text-on-surface leading-tight">HNIFN.PNG</h1>
             <p className="text-[14px] font-bold text-on-primary-container opacity-70">Informatics Student</p>
           </div>
 
-          {/* Close button for mobile screens */}
           <button
             onClick={toggleSidebar}
-            className="md:hidden bg-secondary-container border-2 border-black p-1.5 flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer"
-            aria-label="Close Sidebar"
+            className="bg-secondary-container border-2 border-black w-8 h-8 flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
+            aria-label="Tutup Sidebar"
           >
-            <span className="material-symbols-outlined text-black font-black text-xl select-none">
+            <span className="material-symbols-outlined text-black font-black text-base select-none">
               close
             </span>
           </button>
