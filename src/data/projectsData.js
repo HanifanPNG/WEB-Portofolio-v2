@@ -1,0 +1,58 @@
+const projectsData = [
+  {
+    title: 'Si-Jalingga',
+    tag: 'Information System',
+    tagBg: 'bg-primary-container',
+    description: 'Sistem Informasi Jalan Purbalingga, a collaboration system for mapping damaged roads.',
+    image: '/images/sijalingga.jpg',
+    sourceUrl: '#',
+    liveUrl: '#',
+  },
+  {
+    title: 'Saba-Chicken',
+    tag: 'Company Profile',
+    tagBg: 'bg-secondary-container',
+    description: 'Company Profile for a best-selling fried chicken restaurant in Gembong, Purbalingga.',
+    image: '/images/sabachicken.jpg',
+    sourceUrl: '#',
+    liveUrl: '#',
+  },
+  {
+    title: 'Oemah Soto',
+    tag: 'Company profile',
+    tagBg: 'bg-tertiary-container',
+    description: 'A stall selling various traditional foods and the most delicious soto in Cilongok.',
+    image: '/images/oemahsoto.jpg',
+    sourceUrl: '#',
+    liveUrl: '#',
+  },
+  {
+    title: 'MBG-ku',
+    tag: 'Information System',
+    tagBg: 'bg-primary-container',
+    description: 'Final assignment for web programming course, a collaboration teamwork system for MBG program.',
+    image: '/images/mbgku.jpg',
+    sourceUrl: '#',
+    liveUrl: '#',
+  },
+  {
+    title: 'Web PhotoBooth',
+    tag: 'Web App',
+    tagBg: 'bg-secondary-container',
+    description: 'Simple photobooth web with html 5, tailwindcss and javascript for fun interactions.',
+    image: '/images/photobooth.jpg',
+    sourceUrl: '#',
+    liveUrl: '#',
+  },
+  {
+    title: 'CineMax',
+    tag: 'Web App',
+    tagBg: 'bg-tertiary-container',
+    description: 'Web For Watching Movie like netflix, featuring a wide library and seamless playback UI.',
+    image: '/images/cinemax.jpg',
+    sourceUrl: '#',
+    liveUrl: '#',
+  },
+];
+
+export default projectsData;

@@ -6,7 +6,7 @@ export default function Hero() {
       
       {/* YELLOW HERO CARD */}
       <div 
-        // AOS: Kartu utama muncul dengan halus dari bawah dengan durasi yang pas
+        // AOS: Main card appears smoothly from below with the right duration
         data-aos="fade-up"
         data-aos-duration="1000"
         className="col-span-12 lg:col-span-8 bg-secondary-container border-2 border-black hard-shadow p-8 flex flex-col md:flex-row items-center gap-8 overflow-hidden relative"
@@ -50,7 +50,7 @@ export default function Hero() {
         {/* PROFILE IMAGE AREA */}
         <div 
           className="relative w-full md:w-1/3 flex justify-center"
-          data-aos="zoom-in-left" // Menggunakan kombinasi zoom + arah agar masuknya dinamis
+          data-aos="zoom-in-left" // Using zoom + direction combination for dynamic entrance
           data-aos-delay="500"
         >
           <img
@@ -64,7 +64,7 @@ export default function Hero() {
 
       {/* SOCIAL MEDIA PINK CARD */}
       <div 
-        // AOS: Kartu media sosial masuk dari arah kanan
+        // AOS: Social media card enters from the right
         data-aos="fade-left"
         data-aos-duration="1000"
         data-aos-delay="200"
@@ -80,7 +80,7 @@ export default function Hero() {
               target="_blank" 
               rel="noopener noreferrer"
               data-aos="zoom-in"
-              data-aos-delay="500" // Ditampilkan berurutan (staggered)
+              data-aos-delay="500" // Displayed sequentially (staggered)
               className="border-2 border-black p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-none transition-all duration-100 flex flex-col justify-between group cursor-pointer"
               style={{ boxShadow: '3px 3px 0px 0px #000' }}
             >
@@ -106,7 +106,7 @@ export default function Hero() {
               target="_blank" 
               rel="noopener noreferrer"
               data-aos="zoom-in"
-              data-aos-delay="600" // Ditampilkan setelah Instagram (+100ms)
+              data-aos-delay="600" // Displayed after Instagram (+100ms)
               className="border-2 border-black p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-none transition-all duration-100 flex flex-col justify-between group cursor-pointer"
               style={{ boxShadow: '3px 3px 0px 0px #000' }}
             >
@@ -132,7 +132,7 @@ export default function Hero() {
               target="_blank" 
               rel="noopener noreferrer"
               data-aos="zoom-in"
-              data-aos-delay="700" // Ditampilkan setelah TikTok (+100ms)
+              data-aos-delay="700" // Displayed after TikTok (+100ms)
               className="border-2 border-black p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-none transition-all duration-100 flex flex-col justify-between group cursor-pointer"
               style={{ boxShadow: '3px 3px 0px 0px #000' }}
             >
@@ -158,7 +158,7 @@ export default function Hero() {
               target="_blank" 
               rel="noopener noreferrer"
               data-aos="zoom-in"
-              data-aos-delay="800" // Ditampilkan setelah GitHub (+100ms)
+              data-aos-delay="800" // Displayed after GitHub (+100ms)
               className="border-2 border-black p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-none transition-all duration-100 flex flex-col justify-between group cursor-pointer"
               style={{ boxShadow: '3px 3px 0px 0px #000' }}
             >

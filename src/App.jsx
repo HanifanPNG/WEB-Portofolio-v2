@@ -9,10 +9,12 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FAB from './components/FAB';
 import Loader from './components/Loader';
+import ShowcasePage from './components/ShowcasePage';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default function App() {
+  const [page, setPage] = useState('home');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [showNavText, setShowNavText] = useState(true);
@@ -73,22 +75,28 @@ export default function App() {
 
   return (
     <>
-      {isLoading && <Loader onFinished={handleLoaderFinished} />}
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <TopBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} showNavText={showNavText} />
-      <div className={`transition-all duration-300 ease-in-out ${
-        isSidebarOpen ? 'md:ml-[240px] ml-0' : 'ml-0'
-      }`}>
-        <main className="mt-16 p-6 min-h-screen">
-          <Hero />
-          <Experience />
-          <Tools />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-      <FAB />
+      {page === 'showcase' ? (
+        <ShowcasePage onBack={() => setPage('home')} />
+      ) : (
+        <>
+          {isLoading && <Loader onFinished={handleLoaderFinished} />}
+          <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+          <TopBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} showNavText={showNavText} />
+          <div className={`transition-all duration-300 ease-in-out ${
+            isSidebarOpen ? 'md:ml-[240px] ml-0' : 'ml-0'
+          }`}>
+            <main className="mt-16 p-6 min-h-screen">
+              <Hero />
+              <Experience />
+              <Tools />
+              <Projects onShowAll={() => setPage('showcase')} />
+              <Contact />
+            </main>
+            <Footer />
+          </div>
+          <FAB />
+        </>
+      )}
     </>
   )
 }

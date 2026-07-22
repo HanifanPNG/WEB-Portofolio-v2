@@ -101,7 +101,7 @@ export default function Experience() {
               data-aos-delay={200 + INITIAL_SHOW * 150}
               className="w-full bg-white border-2 border-black p-4 hard-shadow font-black text-sm uppercase hover:translate-x-1 transition-transform duration-300 cursor-pointer"
             >
-              Lihat pengalaman lainnya (+{hiddenCount})
+              View other experiences (+{hiddenCount})
             </button>
           )}
           {showAllExp && hiddenCount > 0 && (
@@ -109,7 +109,7 @@ export default function Experience() {
               onClick={() => setShowAllExp(false)}
               className="w-full bg-white border-2 border-black p-4 hard-shadow font-black text-sm uppercase hover:-translate-x-1 transition-transform duration-300 cursor-pointer"
             >
-              Tampilkan lebih sedikit
+              Show less
             </button>
           )}
         </div>
@@ -118,7 +118,7 @@ export default function Experience() {
       {/* CERTIFICATES SECTION */}
       <div 
         className="col-span-12 lg:col-span-5" id="certificates"
-        data-aos="fade-left" // Blok sertifikat bergeser halus dari kanan
+        data-aos="fade-left" // Certificate block slides smoothly from the right
         data-aos-duration="800"
         data-aos-delay="100"
       >
@@ -132,7 +132,7 @@ export default function Experience() {
               <div 
                 key={index} 
                 onClick={() => setActiveCert(cert)}
-                data-aos="zoom-in-up" // Efek sertifikat memantul kecil dari bawah ke atas
+                data-aos="zoom-in-up" // Certificate bounces slightly from bottom to top
                 data-aos-delay={300 + index * 150}
                 className="bg-white border-2 border-black p-3 hover:translate-x-1 hover:translate-y-0.5 hover:shadow-none transition-all duration-300 ease-in-out cursor-pointer flex gap-4 items-center group"
                 style={{ boxShadow: '4px 4px 0px 0px #000' }}
@@ -171,7 +171,7 @@ export default function Experience() {
           onClick={() => setActiveCert(null)}
         >
           <div 
-            data-aos="zoom-in" // Menambahkan animasi pop-up instan pada modal saat terbuka
+            data-aos="zoom-in" // Adds instant pop-up animation to modal when opened
             data-aos-duration="300"
             className="bg-white border-4 border-black p-6 hard-shadow max-w-3xl w-full relative"
             onClick={(e) => e.stopPropagation()}

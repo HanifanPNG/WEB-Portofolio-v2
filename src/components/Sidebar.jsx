@@ -27,13 +27,13 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
 
   return (
     <>
-      {/* Floating toggle — visible saat sidebar tertutup */}
+      {/* Floating toggle — visible when sidebar is closed */}
       <button
         onClick={toggleSidebar}
         className={`fixed top-4 left-4 z-50 bg-secondary-container border-2 border-black w-10 h-10 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer ${
           isOpen ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 pointer-events-auto scale-100'
         }`}
-        aria-label="Buka Sidebar"
+        aria-label="Open Sidebar"
       >
         <span className="material-symbols-outlined text-black font-black select-none">menu</span>
       </button>
@@ -65,7 +65,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
           <button
             onClick={toggleSidebar}
             className="bg-secondary-container border-2 border-black w-8 h-8 flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
-            aria-label="Tutup Sidebar"
+            aria-label="Close Sidebar"
           >
             <span className="material-symbols-outlined text-black font-black text-base select-none">
               close
@@ -80,9 +80,9 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
             key={label}
             href={href}
             onClick={(e) => handleScroll(e, href)}
-            // AOS: Efek staggered (bergantian). Menu 1, 2, 3, 4 akan muncul berurutan.
+            // AOS: Staggered effect. Menu 1, 2, 3, 4 appear sequentially.
             data-aos="fade-right"
-            data-aos-delay={300 + index * 100} // Menu pertama delay 300ms, kedua 400ms, dst.
+            data-aos-delay={300 + index * 100} // First menu delay 300ms, second 400ms, etc.
             className={`flex items-center gap-3 p-3 font-bold transition-all duration-300 ease-in-out border border-transparent ${
               activeLink === href
                 ? 'bg-black text-white translate-x-2 border-black'
@@ -99,7 +99,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
       <div 
         className="p-6 border-t-2 border-black/10"
         data-aos="fade-up"
-        data-aos-delay="700" // Muncul paling terakhir di bagian bawah
+        data-aos-delay="700" // Appears last at the bottom
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 border-2 border-black bg-tertiary-container flex items-center justify-center font-bold text-sm transition-transform duration-300 hover:rotate-6">

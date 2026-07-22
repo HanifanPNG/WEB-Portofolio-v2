@@ -1,64 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import projectsData from '../data/projectsData';
 
-const projectsData = [
-  {
-    title: 'Si-Jalingga',
-    tag: 'CIVIC TECH',
-    tagBg: 'bg-primary-container',
-    description: 'Sistem Informasi Jalan Purbalingga, a collaboration system for mapping damaged roads.',
-    image: '/images/sijalingga.jpg',
-    sourceUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'Saba-Chicken',
-    tag: 'ECOMMERCE',
-    tagBg: 'bg-secondary-container',
-    description: 'Company Profile for a best-selling fried chicken restaurant in Gembong, Purbalingga.',
-    image: '/images/sabachicken.jpg',
-    sourceUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'Oemah Soto',
-    tag: 'WEB DESIGN',
-    tagBg: 'bg-tertiary-container',
-    description: 'A stall selling various traditional foods and the most delicious soto in Cilongok.',
-    image: '/images/oemahsoto.jpg',
-    sourceUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'MBG-ku',
-    tag: 'WEB APP',
-    tagBg: 'bg-primary-container',
-    description: 'Final assignment for web programming course, a collaboration teamwork system for MBG program.',
-    image: '/images/mbgku.jpg',
-    sourceUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'Web PhotoBooth',
-    tag: 'DYNAMIC JS',
-    tagBg: 'bg-secondary-container',
-    description: 'Simple photobooth web with html 5, tailwindcss and javascript for fun interactions.',
-    image: '/images/photobooth.jpg',
-    sourceUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'CineMax',
-    tag: 'MEDIA WEB',
-    tagBg: 'bg-tertiary-container',
-    description: 'Web For Watching Movie like netflix, featuring a wide library and seamless playback UI.',
-    image: '/images/cinemax.jpg',
-    sourceUrl: '#',
-    liveUrl: '#',
-  },
-];
+const INITIAL_SHOW = 4;
 
-export default function Projects() {
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'list'
+export default function Projects({ onShowAll }) {
+  const [viewMode, setViewMode] = useState('grid');
+  const visibleProjects = projectsData.slice(0, INITIAL_SHOW);
+  const hiddenCount = projectsData.length - INITIAL_SHOW;
 
   return (
     <section className="mb-6 overflow-hidden" id="projects">
@@ -95,12 +43,10 @@ export default function Projects() {
       {/* PROJECTS DISPLAY CONTAINER */}
       {viewMode === 'grid' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectsData.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <div 
               key={project.title} 
-              // AOS: Animasi pop up lembut dari bawah
               data-aos="fade-up"
-              // Trik Sederhana: index % 3 membuat delay berulang tiap baris (0, 100, 200, lalu kembali ke 0, 100, 200)
               data-aos-delay={(index % 3) * 100}
               className="bg-white border-2 border-black hard-shadow overflow-hidden group hover:-translate-y-1 transition-all duration-300 ease-in-out"
             >
@@ -131,12 +77,10 @@ export default function Projects() {
         </div>
       ) : (
         <div className="space-y-4">
-          {projectsData.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <div 
               key={project.title} 
-              // AOS: Pada mode list, animasi bergeser masuk searah dari kiri ke kanan
               data-aos="fade-right"
-              // Delay bertingkat linear karena berbentuk satu kolom lurus ke bawah
               data-aos-delay={index * 100}
               className="bg-white border-2 border-black hard-shadow p-6 flex flex-col md:flex-row items-center gap-6 group hover:translate-x-1 transition-all duration-300 ease-in-out"
             >
@@ -163,6 +107,17 @@ export default function Projects() {
             </div>
           ))}
         </div>
+      )}
+
+      {hiddenCount > 0 && (
+        <button
+          onClick={onShowAll}
+          data-aos="fade-up"
+          data-aos-delay={(INITIAL_SHOW % 3) * 100 + 100}
+          className="w-full mt-6 bg-white border-2 border-black p-4 hard-shadow font-black text-sm uppercase hover:translate-x-1 transition-transform duration-300 cursor-pointer"
+        >
+          View all projects (+{hiddenCount})
+        </button>
       )}
     </section>
   );
