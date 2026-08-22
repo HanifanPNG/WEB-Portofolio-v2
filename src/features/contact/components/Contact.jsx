@@ -1,4 +1,5 @@
 import React from 'react';
+import { CONTACT_EMAIL, CONTACT_WHATSAPP, WHATSAPP_ICON } from '../data/contactData';
 
 export default function Contact() {
   const handleSubmit = (e) => {
@@ -18,15 +19,15 @@ export default function Contact() {
         <div className="flex flex-col gap-4">
           <div className="bg-white text-black px-6 py-3 font-bold border-2 border-black hard-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-100 flex items-center gap-2 w-fit">
             <span className="material-symbols-outlined">mail</span>
-            <span className="font-bold">hanipanpangabekti@gmail.com</span>
+            <span className="font-bold">{CONTACT_EMAIL}</span>
           </div>
           <div className="bg-white text-black px-6 py-3 font-bold border-2 border-black hard-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-100 flex items-center gap-2 w-fit">
             <img
-              src="https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/whatsapp.svg"
+              src={WHATSAPP_ICON}
               alt="WhatsApp"
               className="w-5 h-5 object-contain"
             />
-            <span className="font-bold">+62 858 7865 7632</span>
+            <span className="font-bold">{CONTACT_WHATSAPP}</span>
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function TopBar({ isOpen, showNavText }) {
 
       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
         <img
-          src="/images/profile.jpg"
+          src="/images/profile1.jpg"
           alt="Hanifan Pangabekti"
           className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-black object-cover hover:scale-105 transition-transform duration-200"
         />

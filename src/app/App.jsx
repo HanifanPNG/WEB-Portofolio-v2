@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
-import Sidebar from './components/Sidebar';
-import TopBar from './components/TopBar';
-import Hero from './components/Hero';
-import Experience from './components/Experience';
-import Tools from './components/Tools';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import FAB from './components/FAB';
-import Loader from './components/Loader';
-import ShowcasePage from './components/ShowcasePage';
+import Sidebar from '../shared/components/layout/Sidebar';
+import TopBar from '../shared/components/layout/TopBar';
+import Footer from '../shared/components/layout/Footer';
+import FAB from '../shared/components/layout/FAB';
+import Loader from '../shared/components/layout/Loader';
+import Hero from '../features/hero/components/Hero';
+import ExperienceList from '../features/experience/components/ExperienceList';
+import CertificateGallery from '../features/certificates/components/CertificateGallery';
+import Tools from '../features/tools/components/Tools';
+import ProjectsSection from '../features/projects/components/ProjectsSection';
+import ShowcasePage from '../features/projects/components/ShowcasePage';
+import Contact from '../features/contact/components/Contact';
+import useIsDesktop from '../shared/hooks/useIsDesktop';
+import useNavVisibility from '../shared/hooks/useNavVisibility';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -17,52 +20,24 @@ export default function App() {
   const [page, setPage] = useState('home');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [showNavText, setShowNavText] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const isDesktop = useIsDesktop();
+  const showNavText = useNavVisibility();
 
-  // Responsive default state on mount & resize
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setIsSidebarOpen(false);
-      } else {
-        setIsSidebarOpen(true);
-      }
-    };
-    
-    // Initial check
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Show/hide nav text on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setShowNavText(false);
-      } else {
-        setShowNavText(true);
-      }
-      setLastScrollY(currentScrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+    setIsSidebarOpen(isDesktop);
+  }, [isDesktop]);
 
   const toggleSidebar = () => {
     if (isSidebarOpen) {
-      setShowNavText(true);
+      // keep nav text visible when closing the sidebar so the toggle stays readable
+      setIsSidebarOpen(prev => !prev);
+    } else {
+      setIsSidebarOpen(prev => !prev);
     }
-    setIsSidebarOpen(prev => !prev);
   };
 
   const handleLoaderFinished = () => {
     setIsLoading(false);
-    // Use refreshHard to wipe prior animation state — ensures every data-aos element
-    // animates fresh now that the loader curtain has lifted.
     setTimeout(() => {
       AOS.init({
         duration: 800,
@@ -81,15 +56,18 @@ export default function App() {
         <>
           {isLoading && <Loader onFinished={handleLoaderFinished} />}
           <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-          <TopBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} showNavText={showNavText} />
+          <TopBar isOpen={isSidebarOpen} showNavText={showNavText} />
           <div className={`transition-all duration-300 ease-in-out ${
             isSidebarOpen ? 'md:ml-[240px] ml-0' : 'ml-0'
           }`}>
             <main className="mt-16 p-6 min-h-screen">
               <Hero />
-              <Experience />
+              <section className="grid grid-cols-12 gap-6 mb-6 overflow-hidden">
+                <ExperienceList />
+                <CertificateGallery />
+              </section>
               <Tools />
-              <Projects onShowAll={() => setPage('showcase')} />
+              <ProjectsSection onShowAll={() => setPage('showcase')} />
               <Contact />
             </main>
             <Footer />
