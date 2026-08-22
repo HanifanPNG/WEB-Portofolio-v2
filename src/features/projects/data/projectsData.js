@@ -66,7 +66,7 @@ const projectsData = [
     title: 'Web Ponpes Aswaja An-Nahdliyah Panembahan',
     tag: 'Web App',
     tagBg: 'bg-tertiary-container',
-    description: 'A village website to explore the potential of Jadikarya village.',
+    description: 'A website for an Islamic boarding school in Sumbang, Banyumas, that helps disseminate information about the institution.',
     image: '/images/projects/aswaja.png',
     sourceUrl: 'https://github.com/HanifanPNG/web-pondok-aswaja',
     liveUrl: 'https://web-pondok-aswaja.vercel.app/',
