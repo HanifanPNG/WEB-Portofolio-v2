@@ -102,12 +102,9 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
         data-aos-delay="700" // Appears last at the bottom
       >
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 border-2 border-black bg-tertiary-container flex items-center justify-center font-bold text-sm transition-transform duration-300 hover:rotate-6">
-            HP
-          </div>
           <div>
-            <p className="text-[14px] font-bold leading-4">Hanifan P.</p>
-            <p className="text-[10px] uppercase font-bold text-on-surface-variant">FrontEnd Dev</p>
+            <p className="text-sm font-bold leading-4 italic pb-1">"Nggapapa pelan asal jalan"</p>
+            <p className="text-[10px] uppercase font-bold text-on-surface-variant flex justify-center">kata kata hari ini</p>
           </div>
         </div>
       </div>

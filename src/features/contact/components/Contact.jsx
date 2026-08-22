@@ -1,5 +1,5 @@
 import React from 'react';
-import { CONTACT_EMAIL, CONTACT_WHATSAPP, WHATSAPP_ICON } from '../data/contactData';
+import { CONTACT_EMAIL, CONTACT_WHATSAPP, CONTACT_WHATSAPP_CLEAN, WHATSAPP_ICON } from '../data/contactData';
 
 export default function Contact() {
   const handleSubmit = (e) => {
@@ -21,14 +21,19 @@ export default function Contact() {
             <span className="material-symbols-outlined">mail</span>
             <span className="font-bold">{CONTACT_EMAIL}</span>
           </div>
-          <div className="bg-white text-black px-6 py-3 font-bold border-2 border-black hard-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-100 flex items-center gap-2 w-fit">
+          <a
+            href={`https://wa.me/${CONTACT_WHATSAPP_CLEAN}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-black px-6 py-3 font-bold border-2 border-black hard-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-100 flex items-center gap-2 w-fit cursor-pointer"
+          >
             <img
               src={WHATSAPP_ICON}
               alt="WhatsApp"
               className="w-5 h-5 object-contain"
             />
             <span className="font-bold">{CONTACT_WHATSAPP}</span>
-          </div>
+          </a>
         </div>
       </div>
       <div className="bg-primary-container border-2 border-black hard-shadow p-8">
