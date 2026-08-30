@@ -32,8 +32,8 @@ const projectsData = [
     tagBg: 'bg-primary-container',
     description: 'Final assignment for web programming course, a collaboration teamwork system for MBG program.',
     image: '/images/projects/mbgku.jpg',
-    sourceUrl: '#',
-    liveUrl: '#',
+    sourceUrl: 'https://github.com/HanifanPNG/project-mbg',
+    liveUrl: 'https://mbg-ku.site.je/',
   },
   {
     title: 'Web PhotoBooth',
