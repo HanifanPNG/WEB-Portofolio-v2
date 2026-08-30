@@ -71,6 +71,17 @@ const projectsData = [
     sourceUrl: 'https://github.com/HanifanPNG/web-pondok-aswaja',
     liveUrl: 'https://web-pondok-aswaja.vercel.app/',
   },
+  {
+    title: 'Prototype ecocycle App',
+    tag: 'UI/UX Design',
+    tagBg: 'bg-tertiary-container',
+    description: 'Desain Mobile & web application for collecting & recycling waste with features of tracking and rewarding.',
+    image: '/images/projects/prototype.jpg',
+    links: [
+      { label: 'Mobile Proto', url: 'https://www.figma.com/proto/BF6FH7Dna7RaQnNncKteIE/real-estate?node-id=0-1&p=f&viewport=1405%2C-980%2C0.1&t=7AGDpCazCvSz3nR6-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=220%3A16&show-proto-sidebar=1', isPrimary: true },
+      { label: 'Admin Proto', url: 'https://www.figma.com/proto/BF6FH7Dna7RaQnNncKteIE/real-estate?node-id=260-830&viewport=2439%2C-8976%2C0.74&t=M1scHikkwT3llS8v-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=220%3A16&show-proto-sidebar=1&page-id=0%3A1', isPrimary: false },
+    ],
+  },
 ];
 
 export default projectsData;
