@@ -72,6 +72,15 @@ const projectsData = [
     liveUrl: 'https://web-pondok-aswaja.vercel.app/',
   },
   {
+    title: 'EXOTIC: Online shoe sales website',
+    tag: 'E-commerce website',
+    tagBg: 'bg-tertiary-container',
+    description: 'Website for selling shoes with features of online purchasing, payment, and shipping.',
+    image: '/images/projects/exotic.png',
+    sourceUrl: 'https://github.com/HanifanPNG/sepatu-shop',
+    liveUrl: 'https://exotic-shop.vercel.app/',
+  },
+  {
     title: 'Prototype ecocycle App',
     tag: 'UI/UX Design',
     tagBg: 'bg-tertiary-container',
