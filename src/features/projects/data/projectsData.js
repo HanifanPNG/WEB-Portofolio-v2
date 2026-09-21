@@ -91,6 +91,15 @@ const projectsData = [
       { label: 'Admin Proto', url: 'https://www.figma.com/proto/BF6FH7Dna7RaQnNncKteIE/real-estate?node-id=260-830&viewport=2439%2C-8976%2C0.74&t=M1scHikkwT3llS8v-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=220%3A16&show-proto-sidebar=1&page-id=0%3A1', isPrimary: false },
     ],
   },
+  {
+    title: 'Delirecipe',
+    tag: 'Web App',
+    tagBg: 'bg-tertiary-container',
+    description: 'Website for selling shoes with features of online purchasing, payment, and shipping.',
+    image: '/images/projects/delirecipe.png',
+    sourceUrl: 'https://github.com/HanifanPNG/delirecipe-frontend',
+    liveUrl: 'https://delirecipe.vercel.app/',
+  },
 ];
 
 export default projectsData;
