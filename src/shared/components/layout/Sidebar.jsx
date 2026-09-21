@@ -104,7 +104,6 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
         <div className="flex items-center gap-3">
           <div>
             <p className="text-sm font-bold leading-4 italic pb-1">"Nggapapa pelan asal jalan"</p>
-            <p className="text-[10px] uppercase font-bold text-on-surface-variant flex justify-center">kata kata hari ini</p>
           </div>
         </div>
       </div>
