@@ -12,7 +12,6 @@ import ProjectsSection from '../features/projects/components/ProjectsSection';
 import ShowcasePage from '../features/projects/components/ShowcasePage';
 import Contact from '../features/contact/components/Contact';
 import useIsDesktop from '../shared/hooks/useIsDesktop';
-import useNavVisibility from '../shared/hooks/useNavVisibility';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -21,7 +20,6 @@ export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const isDesktop = useIsDesktop();
-  const showNavText = useNavVisibility();
 
   useEffect(() => {
     setIsSidebarOpen(isDesktop);
@@ -56,7 +54,7 @@ export default function App() {
         <>
           {isLoading && <Loader onFinished={handleLoaderFinished} />}
           <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-          <TopBar isOpen={isSidebarOpen} showNavText={showNavText} />
+          <TopBar isOpen={isSidebarOpen} />
           <div className={`transition-all duration-300 ease-in-out ${
             isSidebarOpen ? 'md:ml-[240px] ml-0' : 'ml-0'
           }`}>
